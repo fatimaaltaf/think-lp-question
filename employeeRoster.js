@@ -1,11 +1,13 @@
 const Employee = require("./employee");
 const moment = require("moment");
 
+// Setup default state for new Employee Roster
 class EmployeeRoster {
   constructor() {
-    this.roster = {}; //chose object to optimize for add/delete but meh..
+    this.roster = {}; //chose object to optimize for add/delete, return list of active employees, and return list of terminated employees
   }
 
+  // Employee instance to create new employee and add to roster
   addEmployee(firstName, lastName, age, jobTitle, department, salary) {
     let newEmployee = new Employee(
       firstName,
@@ -19,16 +21,18 @@ class EmployeeRoster {
     return newEmployee;
   }
 
+  // Remove employee by deleting returned employee ID
   removeEmployee(id) {
     delete this.roster[id];
   }
 
+  // Calls terminate function to change status to terminate
   terminateEmployee(id) {
     this.roster[id].terminate();
   }
 
+  // Loops through employee object and returns only employees with STATUS.ACTIVE
   getActiveEmployees() {
-    //loop through object and return only objects with STATUS.ACTIVE
     let activeEmployees = [];
 
     for (let employeeId in this.roster) {
@@ -40,13 +44,11 @@ class EmployeeRoster {
     return activeEmployees;
   }
 
+  // Loops through employee object with given number and period of time
+  // and returns only employees with STATUS.ACTIVE
   getTerminatedEmployees(number, period) {
     let lowerBound = moment().subtract(number, period);
     //terminatedAt is after lowerBound
-
-    //loop through object and return only objects with STATUS.TERMINATED
-    //if start date given, then find ones with STATUS TERMINATED and terminatedAt is greater than startDate
-
     let terminatedEmployees = [];
 
     for (let employeeId in this.roster) {
@@ -61,6 +63,7 @@ class EmployeeRoster {
     return terminatedEmployees;
   }
 
+  // Prints out employees in roster
   toString() {
     let output = `${Object.keys(this.roster).length} Employee(s) in Roster\n`;
 
