@@ -1,7 +1,9 @@
 const EmployeeRoster = require("./employeeRoster");
 
+// Employee roster instance
 const myRoster = new EmployeeRoster();
 
+// Employee data
 let e1 = myRoster.addEmployee(
   "Fatima",
   "Altaf",
@@ -12,18 +14,18 @@ let e1 = myRoster.addEmployee(
 );
 
 let e2 = myRoster.addEmployee(
-  "Bob",
-  "Juju",
-  29,
-  "Pilot",
-  "All Star",
-  "10000000"
+  "Dwight",
+  "Schrute",
+  44,
+  "Beet Farmer",
+  "Dunder Mifflin",
+  "45000"
 );
 
-myRoster.terminateEmployee(e1.id);
+myRoster.terminateEmployee(); // Terminates employee
 
 // console.log(myRoster.getActiveEmployees());
 
-console.log(myRoster.getTerminatedEmployees(1, "month"));
+// console.log(myRoster.getTerminatedEmployees(1, "month"));
 
-console.log(myRoster.toString());
+console.log(myRoster.toString()); // Prints roster of employee e1 and e2
