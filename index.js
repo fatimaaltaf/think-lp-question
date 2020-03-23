@@ -24,6 +24,6 @@ myRoster.terminateEmployee(e1.id);
 
 // console.log(myRoster.getActiveEmployees());
 
-console.log(myRoster.getTerminatedEmployees(1, "days"));
+console.log(myRoster.getTerminatedEmployees(1, "month"));
 
-// console.log(myRoster.toString());
+console.log(myRoster.toString());

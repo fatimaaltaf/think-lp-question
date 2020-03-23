@@ -1,4 +1,4 @@
-const uuidv4 = require("uuid").v4;
+const uuidv4 = require("uuid").v4; // Random ID generator
 const moment = require("moment");
 
 class Employee {
@@ -24,7 +24,7 @@ class Employee {
   // FORMAT THIS
   toString() {
     //print out an employee
-    return `Name: ${this.firstName} ${this.lastName} || Status: ${this.status} || Age:${this.age}`;
+    return `Name: ${this.firstName} ${this.lastName} \nStatus: ${this.status} \nAge:${this.age} \nTitle: ${this.jobTitle} \nDepartment: ${this.department} \nSalary: ${this.salary}`;
   }
 }
 
