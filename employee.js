@@ -1,6 +1,7 @@
 const uuidv4 = require("uuid").v4; // Random ID generator
 const moment = require("moment");
 
+// Setup default state for new Employee instances
 class Employee {
   constructor(firstName, lastName, age, jobTitle, department, salary) {
     this.id = uuidv4();
@@ -16,12 +17,12 @@ class Employee {
     this.terminatedAt = null;
   }
 
+  // Specifies employee termination time and sets status to terminated
   terminate() {
     this.status = Employee.status.TERMINATED;
     this.terminatedAt = moment();
   }
 
-  // FORMAT THIS
   toString() {
     //print out an employee
     return `Name: ${this.firstName} ${this.lastName} \nStatus: ${this.status} \nAge:${this.age} \nTitle: ${this.jobTitle} \nDepartment: ${this.department} \nSalary: ${this.salary}`;
@@ -41,6 +42,3 @@ Employee.status = {
 };
 
 module.exports = Employee;
-// 1. Add / remove employees
-// 2. Return a list of active employees
-// 3. Return a list of terminated employees in the last month
