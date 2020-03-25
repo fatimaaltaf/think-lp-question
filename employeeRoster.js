@@ -48,14 +48,14 @@ class EmployeeRoster {
   // Return all Employees that are terminated after the given period
   getTerminatedEmployees(number, period) {
     // Current time subtracting from the given period
-    let terminated = moment().subtract(number, period);
+    let lowerBound = moment().subtract(number, period);
     let terminatedEmployees = [];
 
     for (let employeeId in this.roster) {
-      // Make sure Employee status is terminated and the terminated date is after the x
+      // Make sure Employee status is terminated and the terminated date is after the lowerBound
       if (
         this.roster[employeeId].status === Employee.status.TERMINATED &&
-        this.roster[employeeId].terminatedAt.isAfter(terminated)
+        this.roster[employeeId].terminatedAt.isAfter(lowerBound)
       ) {
         terminatedEmployees.push(this.roster[employeeId]);
       }
