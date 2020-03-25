@@ -1,8 +1,8 @@
 const uuidv4 = require("uuid").v4; // Random ID generator
 const moment = require("moment");
 
-// Setup default state for new Employee instances
 class Employee {
+  // Setup default state for new Employee instances
   constructor(firstName, lastName, age, jobTitle, department, salary) {
     this.id = uuidv4();
     this.firstName = firstName;
@@ -17,18 +17,19 @@ class Employee {
     this.terminatedAt = null;
   }
 
-  // Specifies employee termination time and sets status to terminated
+  // Sets employee termination time and status to terminated
   terminate() {
     this.status = Employee.status.TERMINATED;
     this.terminatedAt = moment();
   }
 
+  //Print out string representation of employee
   toString() {
-    //print out an employee
-    return `Name: ${this.firstName} ${this.lastName} \nStatus: ${this.status} \nAge:${this.age} \nTitle: ${this.jobTitle} \nDepartment: ${this.department} \nSalary: ${this.salary}`;
+    return `Name: ${this.firstName} ${this.lastName} || Status: ${this.status} || Title: ${this.jobTitle} || Department: ${this.department}`;
   }
 }
 
+// Class constants
 Employee.jobTypes = {
   FULLTIME: "FULL-TIME",
   PARTTIME: "PART-TIME",
