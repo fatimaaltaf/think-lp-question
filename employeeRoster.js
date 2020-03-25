@@ -1,13 +1,14 @@
 const Employee = require("./employee");
 const moment = require("moment");
 
-// Setup default state for new Employee Roster
+// EmployeeRoster class manages collection of employees
 class EmployeeRoster {
+  // Setup default state for new EmployeeRoster instances
   constructor() {
-    this.roster = {}; //chose object to optimize for add/delete, return list of active employees, and return list of terminated employees
+    this.roster = {};
   }
 
-  // Employee instance to create new employee and add to roster
+  // Creates new Employee instance and adds to roster
   addEmployee(firstName, lastName, age, jobTitle, department, salary) {
     let newEmployee = new Employee(
       firstName,
@@ -21,17 +22,17 @@ class EmployeeRoster {
     return newEmployee;
   }
 
-  // Remove employee by deleting returned employee ID
+  // Remove Employee from roster by Employee ID
   removeEmployee(id) {
     delete this.roster[id];
   }
 
-  // Calls terminate function to change status to terminate
+  // Terminate Employee from roster by Employee ID
   terminateEmployee(id) {
     this.roster[id].terminate();
   }
 
-  // Loops through employee object and returns only employees with STATUS.ACTIVE
+  // Returns an array of active Employees
   getActiveEmployees() {
     let activeEmployees = [];
 
@@ -44,17 +45,17 @@ class EmployeeRoster {
     return activeEmployees;
   }
 
-  // Loops through employee object with given number and period of time
-  // and returns only employees with STATUS.ACTIVE
+  // Return all Employees that are terminated after the given period
   getTerminatedEmployees(number, period) {
-    let lowerBound = moment().subtract(number, period);
-    //terminatedAt is after lowerBound
+    // Current time subtracting from the given period
+    let terminated = moment().subtract(number, period);
     let terminatedEmployees = [];
 
     for (let employeeId in this.roster) {
+      // Make sure Employee status is terminated and the terminated date is after the x
       if (
         this.roster[employeeId].status === Employee.status.TERMINATED &&
-        this.roster[employeeId].terminatedAt.isAfter(lowerBound)
+        this.roster[employeeId].terminatedAt.isAfter(terminated)
       ) {
         terminatedEmployees.push(this.roster[employeeId]);
       }
@@ -63,7 +64,7 @@ class EmployeeRoster {
     return terminatedEmployees;
   }
 
-  // Prints out employees in roster
+  // Returns string representation of EmployeeRoster
   toString() {
     let output = `${Object.keys(this.roster).length} Employee(s) in Roster\n`;
 
