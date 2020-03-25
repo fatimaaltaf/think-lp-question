@@ -17,13 +17,13 @@ class Employee {
     this.terminatedAt = null;
   }
 
-  // Sets employee termination time and status to terminated
+  // Sets Employee termination time and status to terminated
   terminate() {
     this.status = Employee.status.TERMINATED;
     this.terminatedAt = moment();
   }
 
-  //Print out string representation of employee
+  // Returns string representation of Employee
   toString() {
     return `Name: ${this.firstName} ${this.lastName} || Status: ${this.status} || Title: ${this.jobTitle} || Department: ${this.department}`;
   }
